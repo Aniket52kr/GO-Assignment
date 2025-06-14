@@ -46,6 +46,7 @@ func main() {
 	app.Use(sessions.Sessions("tsuki", store))
 	app.Use(middleware.RecoveryMiddleware())
 
+	// public routes:-
 	app.GET("/", index)
 	app.GET("/signup", routes.SignUp)
 	app.GET("/login", routes.Login)
@@ -53,6 +54,7 @@ func main() {
 	app.GET("/feed", middleware.AuthMiddleware(), routes.UserFeed)
 	app.GET("/feed/more", middleware.AuthMiddleware(), routes.LoadMoreFeed)
 
+	// Oauth and verification routes:-
 	auth := app.Group("/auth")
 	{
 		auth.GET("/signup/discord", socials.DiscordSignUp)
@@ -71,6 +73,7 @@ func main() {
 		auth.POST("/login", routes.Login)
 	}
 
+	// user group routes:-
 	user := app.Group("/user")
 	user.GET("/:username", routes.GetUserByName)
 	user.GET("/:username/posts", routes.GetUserPosts)
@@ -90,6 +93,7 @@ func main() {
 		user.POST("/settings/delete", routes.DeleteUser)
 	}
 
+	// search group routes:-
 	search := app.Group("/search")
 	{
 		search.GET("/", routes.SearchUser)
@@ -99,6 +103,7 @@ func main() {
 		search.POST("/:username/toggle-follow", middleware.AuthMiddleware(), routes.ToggleSearchFollow)
 	}
 
+	// post group routes:-
 	post := app.Group("/post")
 	post.GET("/:id", routes.GetPost)
 	post.Use(middleware.AuthMiddleware())
