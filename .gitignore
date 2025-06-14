@@ -1,0 +1,5 @@
+# Ignore environment configuration
+.env
+
+# Ignore token folder and its contents
+token/
