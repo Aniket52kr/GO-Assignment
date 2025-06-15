@@ -3,3 +3,5 @@
 
 # Ignore token folder and its contents
 token/
+
+docker-compose.yml
