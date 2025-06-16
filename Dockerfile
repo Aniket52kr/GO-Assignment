@@ -3,7 +3,7 @@ FROM golang:1.24.4-alpine AS builder
 
 WORKDIR /app
 
-# Install git (needed by some Go modules)
+# Install git 
 RUN apk add --no-cache git
 
 # Copy go module files and download dependencies
