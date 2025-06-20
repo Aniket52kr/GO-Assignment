@@ -10,6 +10,7 @@ import (
 )
 
 func RandomString(length int) string {
+	// Seeds the random number generator with the current time in nanoseconds to ensure a different result each time.
 	rand.Seed(time.Now().UnixNano())
 	const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 	str := make([]byte, length)
