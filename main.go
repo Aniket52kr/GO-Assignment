@@ -43,7 +43,7 @@ func main() {
 	app.LoadHTMLGlob("templates/*")
 
 	store := cookie.NewStore([]byte(os.Getenv("SECRET_KEY")))
-	app.Use(sessions.Sessions("tsuki", store))
+	app.Use(sessions.Sessions("SocialEcho", store))
 	app.Use(middleware.RecoveryMiddleware())
 
 	// public routes:-
